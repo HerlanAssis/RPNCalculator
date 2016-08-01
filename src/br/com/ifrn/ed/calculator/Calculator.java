@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Recebe uma expressão válida para criar a pilha e realizar o cálculo. 
- * Valores Aceitos: Dígitos; operadores: ^,%,*,%,+,-; Números reais de uma casa decimal e Parentêses ();
+ * Recebe uma expressão válida para criar a pilha e realizar o cálculo. Valores
+ * Aceitos: Dígitos; operadores: ^,%,*,%,+,-; Números reais de uma casa decimal
+ * e Parentêses ();
+ *
  * @author Herlan Assis & Sávio Rennan
  */
 public class Calculator {
+
     private static int priorityElements(char element) {
         int priority = 0;
 
@@ -31,8 +34,43 @@ public class Calculator {
         return priority;
     }
 
-    public static MyStack createStack(String expression) {        
-        MyStack<Character> myStack = new MyStack<>();        
+    public static double calculeInfix(MyStack<String> myStack) {
+        MyStack<String> auxStack = new MyStack<>();
+        double result = 0;
+
+        while (!myStack.isEmpty()) {
+            if (myStack.size() == 1) {
+                break;
+            }
+
+            double a = Double.parseDouble(myStack.pop());
+            double b = Double.parseDouble(myStack.pop());;
+            if (!isOperator(myStack.peek())) {
+                while (!isOperator(myStack.peek())) {
+                    double aux = a;
+                    a = b;
+                    b = aux;
+
+                    auxStack.push(String.valueOf(b));
+
+                    b = Double.parseDouble(myStack.pop());
+                }
+            }
+
+            result = operations(a, b, myStack.pop());
+            myStack.push(String.valueOf(result));
+            while (!auxStack.isEmpty()) {
+                myStack.push(auxStack.pop());
+            }
+        }
+
+        result = Double.parseDouble(myStack.pop());
+
+        return result;
+    }
+
+    public static MyStack createStack(String expression) {
+        MyStack<Character> myStack = new MyStack<>();
         ArrayList<Character> myArrayList = new ArrayList<>();
 
         for (int i = 0; i < expression.length(); i++) {
@@ -58,15 +96,15 @@ public class Calculator {
             myArrayList.add(myStack.pop());//retorno todos os elemtos para o ArrayList, dando a "ordem correta".
         }
         Collections.reverse(myArrayList);//inverto o ArryList para que a quando a pilha receber os elementos 
-                                        //eles estejam na ordem correta;
+        //eles estejam na ordem correta;
         for (Character character : myArrayList) {
             myStack.push(character);//Recebo todos os elementos na pilha
         }
-        
+
         MyStack<String> finalStack = new MyStack<>();//preparo para criar os elementos double
-        
+
         finalStack = convertToFinalStack(myStack);//pilha final com os elementos double já criados
-        
+
         return finalStack;
     }
 
@@ -85,7 +123,6 @@ public class Calculator {
             finalStack.push(aux);//recebe o elemento
             aux = new String();//esvazia a String
         }
-
         finalStack = MyStack.reverse(finalStack);
         return finalStack;
     }

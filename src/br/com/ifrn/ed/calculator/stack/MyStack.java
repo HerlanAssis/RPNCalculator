@@ -1,11 +1,11 @@
 package br.com.ifrn.ed.calculator.stack;
 
 import java.util.EmptyStackException;
+
 /**
- * 
+ *
  * @author Herlan Assis & Sávio Rennan
- * @param <T>
- * Esta classe implementa uma pilha dinâmica.
+ * @param <T> Esta classe implementa uma pilha dinâmica.
  */
 public class MyStack<T> implements Stack<T> {
 
@@ -19,6 +19,7 @@ public class MyStack<T> implements Stack<T> {
 
     /**
      * Verifica se a pilha contém algum elemento.
+     *
      * @return verdadeiro para vazio ou false caso contenha algum elemento.
      */
     @Override
@@ -28,6 +29,7 @@ public class MyStack<T> implements Stack<T> {
 
     /**
      * Verifica a quantidade de elementos existentes na pilha.
+     *
      * @return tamanho da fila.
      */
     @Override
@@ -37,6 +39,7 @@ public class MyStack<T> implements Stack<T> {
 
     /**
      * Realiza a operação de inserção de elemento na pilha.
+     *
      * @param element objeto dinâmico.
      */
     @Override
@@ -52,6 +55,7 @@ public class MyStack<T> implements Stack<T> {
 
     /**
      * Remove o elemento do topo da pilha.
+     *
      * @return element.
      */
     @Override
@@ -67,6 +71,7 @@ public class MyStack<T> implements Stack<T> {
 
     /**
      * Retorna o ultimo elemento da pilha sem remove-lo.
+     *
      * @return element.
      */
     @Override
@@ -76,17 +81,37 @@ public class MyStack<T> implements Stack<T> {
         }
         return (T) top.getElement();
     }
-    
+
     /**
      * Inverte uma pilha de objetos.
+     *
      * @param stack
      * @return reverse stack.
      */
-    public static MyStack reverse(MyStack stack){
-        MyStack myStack = new MyStack();        
-        while(!stack.isEmpty()){
+    public static MyStack reverse(MyStack stack) {
+        MyStack myStack = new MyStack();
+        while (!stack.isEmpty()) {
             myStack.push(stack.pop());
-        }       
+        }
         return myStack;
+    }
+
+    /**
+     * Converte a pilha em uma única string sem espaços.
+     *
+     * @return String com todos os elementos da pilha.
+     */
+    @Override
+    public String toString() {
+        String result = "";
+
+        Node aux = top;
+
+        while (aux != null) {
+            result += aux.getElement();
+            aux = aux.getProxNode();
+        }
+
+        return result;
     }
 }
