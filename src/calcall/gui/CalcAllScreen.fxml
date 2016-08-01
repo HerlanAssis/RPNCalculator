@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcall.CalcAllScreenController">
+<VBox alignment="CENTER" layoutX="150.0" layoutY="138.0" prefHeight="348.0" prefWidth="300.999977929685" spacing="10.0" stylesheets="@DarkTheme.css">
+  <fx:define>
+    <Font fx:id="FONT" size="18.0" />
+  </fx:define>
+  <StackPane alignment="CENTER">
+    <Rectangle fill="TRANSPARENT" height="53.0" stroke="GREY" width="297.0">
+            <styleClass>
+               <String fx:value="label-header" />
+               <String fx:value="text-field" />
+            </styleClass></Rectangle>
+    <Text fx:id="output" wrappingWidth="261.0">
+            <font>
+               <Font name="DejaVu Serif Condensed Bold" size="26.0" />
+            </font></Text>
+  </StackPane>
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#button7" prefWidth="50.0" text="7" />
+    <Button onAction="#button8" prefWidth="50.0" text="8" />
+    <Button onAction="#button9" prefWidth="50.0" text="9" />
+    <Button onAction="#buttonClear" prefHeight="33.0" prefWidth="81.0" text="C" />
+
+  </HBox>
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#button4" prefWidth="50.0" text="4" />
+    <Button onAction="#button5" prefWidth="50.0" text="5" />
+    <Button onAction="#button6" prefWidth="50.0" text="6" />
+         <Button onAction="#buttonClearPause" prefHeight="33.0" prefWidth="81.0" text="⇤" />
+  </HBox>
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#button1" prefWidth="50.0" text="1" />
+    <Button onAction="#button2" prefWidth="50.0" text="2" />
+    <Button onAction="#button3" prefWidth="50.0" text="3" />
+    <Button onAction="#buttonMult" prefHeight="33.0" prefWidth="81.0" text="*" />
+  </HBox>
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#buttonPonto" prefHeight="43.0" prefWidth="62.0" text="." />
+    <Button onAction="#button0" prefHeight="43.0" prefWidth="67.0" text="0" />
+    <Button onAction="#buttonSub" prefHeight="43.0" prefWidth="63.0" text="-" />
+    <Button onAction="#buttonSom" prefHeight="33.0" prefWidth="81.0" text="+" />
+  </HBox>
+  <HBox alignment="CENTER" spacing="10.0">
+         <Button mnemonicParsing="false" onAction="#buttonParLeft" prefHeight="43.0" prefWidth="64.0" text="(" />
+         <Button mnemonicParsing="false" onAction="#buttonParRight" prefHeight="43.0" prefWidth="65.0" text=")" />
+         <Button onAction="#buttonExp" prefHeight="43.0" prefWidth="51.0" text="^" />
+         <Button contentDisplay="RIGHT" onAction="#buttonDiv" prefHeight="33.0" prefWidth="81.0" text="/" />
+  </HBox>
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#buttonResul" prefHeight="44.0" prefWidth="122.0" text="=">
+            <font>
+               <Font name="FreeMono Bold" size="32.0" />
+            </font></Button>
+    <Button alignment="CENTER" contentDisplay="CENTER" onAction="#buttonFat" prefHeight="45.0" prefWidth="92.0" text="FAT" />
+    <Button mnemonicParsing="false" onAction="#buttonPorc" prefWidth="50.0" text="\%" />
+  </HBox>
+   
+</VBox>
+   <Label layoutX="55.0" layoutY="526.0" prefHeight="25.0" prefWidth="192.0" text="Expressao Original">
+      <font>
+         <Font name="DejaVu Serif Condensed Bold" size="20.0" />
+      </font></Label>
+   <Label layoutX="352.0" layoutY="526.0" prefHeight="25.0" prefWidth="184.0" text="Expressao Posfixa">
+      <font>
+         <Font name="DejaVu Serif Condensed Bold" size="20.0" />
+      </font></Label>
+   <ImageView fitHeight="127.0" fitWidth="547.0" layoutX="27.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@logo.png" />
+      </image></ImageView>
+   <ImageView fitHeight="110.0" fitWidth="497.0" layoutX="54.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@logoif.png" />
+      </image>
+   </ImageView>
+     <Rectangle fill="TRANSPARENT" height="51.0" layoutX="8.0" layoutY="555.0" stroke="GREY" width="283.0">
+             <styleClass>
+                <String fx:value="label-header" />
+                <String fx:value="text-field" />
+             </styleClass>
+   </Rectangle>
+     <Text fx:id="outputInfixa" layoutX="23.0" layoutY="591.0" wrappingWidth="253.99999570846558">
+      <font>
+         <Font name="System Bold" size="26.0" />
+      </font></Text>
+     <Rectangle fill="TRANSPARENT" height="51.0" layoutX="309.0" layoutY="555.0" stroke="GREY" width="283.0">
+             <styleClass>
+                <String fx:value="label-header" />
+                <String fx:value="text-field" />
+             </styleClass>
+   </Rectangle>
+     <Text fx:id="outputPosfixa" layoutX="334.0" layoutY="592.0" wrappingWidth="233.99999570846558">
+      <font>
+         <Font name="System Bold" size="26.0" />
+      </font></Text>
+</AnchorPane>
